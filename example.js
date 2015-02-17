@@ -1,14 +1,16 @@
-var Connect = require("connect"),
-    Monomi = require("monomi");
+var connect = require('connect');
+var http = require('http');
+var monomi = require("./lib/monomi");
 
-Connect.createServer(
+var app = connect();
 
-    Monomi.detectBrowserType(),
-
-    function(request, response, next) {
+app.use(monomi.detectBrowserType());
+app.use(function(request, response) {
         response.writeHead(200, {'Content-Type': 'text/plain'});
         response.write('Hello World, ');
         response.end('and thanks for using a ' + request.monomi.browserType + ' browser');
     }
+);
 
-).listen(8080);
+http.createServer(app).listen(8080);
+console.log('Listening on http://localhost:8080');
