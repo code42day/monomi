@@ -11,11 +11,11 @@ browser (as a string) in the request.monomi.browserType property:
 
     var Connect = require("connect"),
         monomi = require("monomi");
-    
+
     Connect.createServer(
-    
+
         monomi.detectBrowserType(),
-    
+
         function(request, response, next) {
             response.writeHead(200, {'Content-Type': 'text/plain'});
             response.write('Hello World, ');
@@ -25,7 +25,7 @@ browser (as a string) in the request.monomi.browserType property:
                 ' browser'
             );
         }
-    
+
     ).listen(8080);
 
 For example, if this server is accessed with an iPad, the browser type is
@@ -55,15 +55,15 @@ The options can be passed like this:
         'tablet': {
             'user-agent': new RegExp('ipad', 'i')
         },
-        
+
         ...
-        
+
         'desktop': function (request, userAgent) {
             return true;
         }
 
     }
-    
+
 The 'order' property tells monomi which order to run the recognitions, looking
 for a positive result. For example, the iPhone will match both the 'touch' and
 'mobile' groups by default, but the ordering ensures that the first, 'touch', is
@@ -82,7 +82,7 @@ options object which looks like this:
     'tablet': {
         'user-agent': new RegExp('ipad', 'i')
     }
-    
+
 This indicates that any user-agent matching the 'ipad' regular expression will
 indicate that the device is a tablet.
 
