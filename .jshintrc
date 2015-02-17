@@ -1,0 +1,9 @@
+{
+  "undef": true,
+  "unused": true,
+  "laxbreak": true,
+  "laxcomma": true,
+  "node": true,
+  "sub": true,
+  "eqnull": true
+}
