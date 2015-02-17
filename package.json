@@ -1,5 +1,5 @@
 {
-  "name": "monomi",
+  "name": "code42day-monomi",
   "description": "Middleware for Connect (node.js) for handling mobile (and other types of) browsers.",
   "version": "0.0.1",
   "author": "James Pearce <james@tripleodeon.com>",
@@ -11,7 +11,7 @@
   "repository": [
     {
       "type": "git",
-      "url": "https://github.com/jamesgpearce/monomi.git"
+      "url": "https://github.com/code42day/monomi.git"
     }
   ]
 }
