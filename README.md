@@ -15,7 +15,7 @@ monomi detects which type of browser the client is using to access the node.js
 server, by providing the 'detectBrowserType' middleware. It places the type of
 browser (as a string) in the request.monomi.browserType property:
 
-````
+````javascript
 var connect = require('connect');
 var http = require('http');
 var monomi = require("./lib/monomi");
@@ -24,11 +24,11 @@ var app = connect();
 
 app.use(monomi());
 app.use(function(request, response) {
-        response.writeHead(200, {'Content-Type': 'text/plain'});
-        response.write('Hello World, ');
-        response.end('and thanks for using a ' + request.monomi.browserType + ' browser');
-    }
-);
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write('Hello World, ');
+    response.end('and thanks for using a '
+        + request.monomi.browserType + ' browser');
+});
 
 http.createServer(app).listen(8080);
 ````
@@ -53,21 +53,23 @@ the function.
 
 The options can be passed like this:
 
-    {
-        'order': ['tablet', 'touch', 'mobile', 'desktop'],
-        'default':'unknown',
+````javascript
+{
+    'order': ['tablet', 'touch', 'mobile', 'desktop'],
+    'default':'unknown',
 
-        'tablet': {
-            'user-agent': new RegExp('ipad', 'i')
-        },
+    'tablet': {
+        'user-agent': new RegExp('ipad', 'i')
+    },
 
-        ...
+    ...
 
-        'desktop': function (request, userAgent) {
-            return true;
-        }
-
+    'desktop': function (request, userAgent) {
+        return true;
     }
+
+}
+````
 
 The 'order' property tells monomi which order to run the recognitions, looking
 for a positive result. For example, the iPhone will match both the 'touch' and
@@ -84,9 +86,11 @@ types (that were in the 'order' property). These should be functions (which
 return a boolean result based on some recognition algorithm or other), or an
 options object which looks like this:
 
-    'tablet': {
-        'user-agent': new RegExp('ipad', 'i')
-    }
+````javascript
+'tablet': {
+    'user-agent': new RegExp('ipad', 'i')
+}
+````
 
 This indicates that any user-agent matching the 'ipad' regular expression will
 indicate that the device is a tablet.
@@ -95,13 +99,15 @@ Other headers can also be matched against regular expressions, but you must also
 provide an 'order' property that indicates which order to apply the regex
 conditions in. For example:
 
-    'mobile': {
-        'order':['x-wap-profile', 'profile', 'accept', 'user-agent'],
-        'x-wap-profile': new RegExp('.+'),
-        'profile': new RegExp('.+'),
-        'accept': new RegExp('wap', 'i'),
-        'user-agent': new RegExp('^(w3c |w3c-|acs-|alav|alca|amoi...)', 'i')
-    }
+````javascript
+'mobile': {
+    'order':['x-wap-profile', 'profile', 'accept', 'user-agent'],
+    'x-wap-profile': new RegExp('.+'),
+    'profile': new RegExp('.+'),
+    'accept': new RegExp('wap', 'i'),
+    'user-agent': new RegExp('^(w3c |w3c-|acs-|alav|alca|amoi...)', 'i')
+}
+````
 
 This will look for the presence of an x-wap-profile or profile header, then, if
 not present, look for 'wap' in the accept header. Failing that, it will run a
