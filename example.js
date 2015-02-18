@@ -4,7 +4,7 @@ var monomi = require("./lib/monomi");
 
 var app = connect();
 
-app.use(monomi.detectBrowserType());
+app.use(monomi());
 app.use(function(request, response) {
         response.writeHead(200, {'Content-Type': 'text/plain'});
         response.write('Hello World, ');
