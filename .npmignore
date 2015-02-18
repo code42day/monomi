@@ -2,3 +2,6 @@ LICENSE
 example.js
 .jshintrc
 Makefile
+test
+.travis.yml
+History.md
