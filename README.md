@@ -1,4 +1,10 @@
-# monomi
+[![Build Status](https://img.shields.io/travis/code42day/monomi.svg)](http://travis-ci.org/code42day/monomi)
+[![Dependency Status](https://img.shields.io/gemnasium/code42day/monomi.svg)](https://gemnasium.com/code42day/monomi)
+[![NPM version](https://img.shields.io/npm/v/code42day-monomi.svg)](http://badge.fury.io/js/code42day-monomi)
+
+# code42day-monomi
+
+**Please note**: this is a gently modernized clone of [monomi](https://github.com/jamesgpearce/monomi)
 
 A.K.A. MObile NOde MIddleware
 
@@ -9,24 +15,23 @@ monomi detects which type of browser the client is using to access the node.js
 server, by providing the 'detectBrowserType' middleware. It places the type of
 browser (as a string) in the request.monomi.browserType property:
 
-    var Connect = require("connect"),
-        monomi = require("monomi");
+````
+var connect = require('connect');
+var http = require('http');
+var monomi = require("./lib/monomi");
 
-    Connect.createServer(
+var app = connect();
 
-        monomi.detectBrowserType(),
+app.use(monomi());
+app.use(function(request, response) {
+        response.writeHead(200, {'Content-Type': 'text/plain'});
+        response.write('Hello World, ');
+        response.end('and thanks for using a ' + request.monomi.browserType + ' browser');
+    }
+);
 
-        function(request, response, next) {
-            response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.write('Hello World, ');
-            response.end(
-                'and thanks for using a ' +
-                request.monomi.browserType +
-                ' browser'
-            );
-        }
-
-    ).listen(8080);
+http.createServer(app).listen(8080);
+````
 
 For example, if this server is accessed with an iPad, the browser type is
 'tablet'; if accessed with an iPhone or Android handset, the result is 'touch';
