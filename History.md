@@ -1,4 +1,10 @@
 
+0.2.1 / 2017-02-17
+==================
+
+ * change name to @pirxpilot/monomi
+ * fix code highlighting in Readme
+
 0.2.0 / 2015-02-17
 ==================
 
