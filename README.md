@@ -1,8 +1,8 @@
-[![Build Status](https://img.shields.io/travis/code42day/monomi.svg)](http://travis-ci.org/code42day/monomi)
-[![Dependency Status](https://img.shields.io/gemnasium/code42day/monomi.svg)](https://gemnasium.com/code42day/monomi)
-[![NPM version](https://img.shields.io/npm/v/code42day-monomi.svg)](http://badge.fury.io/js/code42day-monomi)
+[![Build Status](https://img.shields.io/travis/pirxpilot/monomi.svg)](http://travis-ci.org/pirxpilot/monomi)
+[![Dependency Status](https://img.shields.io/gemnasium/pirxpilot/monomi.svg)](https://gemnasium.com/pirxpilot/monomi)
+[![NPM version](https://img.shields.io/npm/v/@pirxpilot/monomi.svg)](https://npmjs.org/package/@pirxpilot/monomi)
 
-# code42day-monomi
+# @pirxpilot/monomi
 
 **Please note**: this is a gently modernized clone of [monomi](https://github.com/jamesgpearce/monomi)
 
